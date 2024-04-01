@@ -83,13 +83,13 @@ mainBox.appendChild(box3)
         <p class="ptext">Галерея</p>
         <dialog id="modall" class="modalGal">
             <div class="cencel">
-                <button onclick="document.querySelector('dialog').close()">
+                <button onclick="document.querySelector('#modall').close()">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
                         <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
                     </svg>
                 </button>
 
-                <button onclick="document.querySelector('dialog').close()">
+                <button onclick="document.querySelector('#modall').close()">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
                         <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
                     </svg>
@@ -247,18 +247,19 @@ infoBox3.appendChild(dialogDiv);
 
 //modal 2
 
-    var dialogDiv2 = document.createElement("div");
+    var dialogDiv2 = document.createElement("div");   
 
     dialogDiv2.innerHTML = `
-        <button onclick="document.getElementById('modal').showModal()" class="btn2"></button>
+        
+        <button onclick="openModal()" class="btn2" id="googlePlay"></button>
         <p class="ptext">Google Play</p>
-        <dialog id="modal">
-            <p>Hi!</p>
-            <div>
-                <button>Yes</button>
-                <button onclick="document.querySelector('dialog').close()">cancel</button>
-            </div>
+
+        <dialog id="myModal">
+            <div id="modalContent" style="overflow: hidden;"></div>
+            <button onclick="closeModal()">Закрыть</button>
         </dialog>
+          
+
     <style>
         .btn2{
             width: 60px;
@@ -276,9 +277,40 @@ infoBox3.appendChild(dialogDiv);
             color: #fff;
             margin: 0 auto;
         }
+        #myModal{
+            width:100%;
+            height:100%;
+            margin: 0 auto;
+            overflow: hidden;
+        }
     </style>
 
     `;
+
+
+    function openModal() {
+        // Получаем ссылку на модальное окно
+        var modal = document.getElementById("myModal");
+        
+        // Загружаем содержимое другого HTML-файла с помощью fetch
+        fetch("dialog.html")
+          .then(response => response.text())
+          .then(data => {
+            // Помещаем полученный HTML внутрь модального окна
+            document.getElementById("modalContent").innerHTML = data;
+            // Открываем модальное окно
+            modal.showModal();
+          })
+          .catch(error => console.error(error));
+    }
+      
+    function closeModal() {
+        // Получаем ссылку на модальное окно и закрываем его
+        var modal = document.getElementById("myModal");
+        modal.close();
+    }
+      
+
 
     dialogDiv2.classList.add("exampleDiv");
 

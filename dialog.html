@@ -6,16 +6,61 @@
     <title>Document</title>
 </head>
 <body>
+    <style>
+        body{
+            overflow: hidden;
+        }
+    </style>
     <button onclick="document.getElementById('modal').showModal()">ok</button>
     <dialog id="modal">
         <p>Hi!</p>
+        <ul id="cart"></ul>
+        <button onclick="clearCart()">Очистить корзину</button>
+
         <div>
             <button>Yes</button>
             <button onclick="document.querySelector('dialog').close()">cancel</button>
         </div>
     </dialog>
 
+    <h1>Корзина</h1>
 
+    <button onclick="addToCart('Товар 1', 100)">Добавить товар 1</button>
+    <button onclick="addToCart('Товар 2', 200)">Добавить товар 2</button>
+    
+    <script>
+        let cart = [];
+
+function addToCart(itemName, itemPrice) {
+    const item = {
+        name: itemName,
+        price: itemPrice
+    };
+    cart.push(item);
+    displayCart();
+}
+
+function displayCart() {
+    const cartList = document.getElementById('cart');
+    cartList.innerHTML = '';
+    let total = 0;
+    cart.forEach(item => {
+        const listItem = document.createElement('li');
+        listItem.textContent = `${item.name} - ${item.price} руб.`;
+        cartList.appendChild(listItem);
+        total += item.price;
+    });
+    const totalItem = document.createElement('li');
+    totalItem.textContent = `Итого: ${total} руб.`;
+    cartList.appendChild(totalItem);
+}
+
+function clearCart() {
+    cart = [];
+    displayCart();
+}
+
+    </script>
 
 </body>
 </html>
