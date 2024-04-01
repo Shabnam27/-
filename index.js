@@ -79,15 +79,53 @@ mainBox.appendChild(box3)
     var dialogDiv = document.createElement("div");
 
     dialogDiv.innerHTML = `
-        <button onclick="document.getElementById('modal').showModal()" class="btn1"></button>
+        <button onclick="document.getElementById('modall').showModal()" class="btn1"></button>
         <p class="ptext">Галерея</p>
-        <dialog id="modal" class="modalGal">
-            <p>Hi!</p>
-            <div>
-                <button onclick="document.querySelector('dialog').close()">cancel</button>
+        <dialog id="modall" class="modalGal">
+            <div class="cencel">
+                <button onclick="document.querySelector('dialog').close()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+                    </svg>
+                </button>
+
+                <button onclick="document.querySelector('dialog').close()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+                    </svg>
+                </button>
             </div>
+            <div class="body">
+                    <section class='gallery'>
+                        <div class='item nohover' data-pos='0'><img src="https://picsum.photos/id/1/640/480"></div>
+                        <div class='item' data-pos='1'><img src="https://picsum.photos/id/17/640/480"></div>
+                        <div class='item' data-pos='2'><img src="https://picsum.photos/id/20/640/480"></div>
+                        <div class='item' data-pos='3'><img src="https://picsum.photos/id/39/640/480"></div>
+                        <div class='item' data-pos='4'><img src="https://picsum.photos/id/43/640/480"></a></div>
+                        <div class='item' data-pos='5'><img src="https://picsum.photos/id/76/640/480"></a></div>
+                        <div class='item' data-pos='6'><img src="https://picsum.photos/id/84/640/480"></a></div>
+                        <div class='item' data-pos='7'><img src="https://picsum.photos/id/103/640/480"></a></div>
+                        <div class='item' data-pos='8'><img src="https://picsum.photos/id/110/640/480"></a></div>
+                        <div class='item' data-pos='9'><img src="https://picsum.photos/id/130/640/480"></a></div>
+                        <div class='item' data-pos='10'><img src="https://picsum.photos/id/137/640/480"></a></div>
+                        <div class='item' data-pos='11'><img src="https://picsum.photos/id/196/640/480"></a></div>
+                    </section>
+            </div>
+        
         </dialog>
     <style>
+        :root {
+            --minFontSize: 10px;
+            --maxFontSize: 24px;
+            --scaler: 5vw;
+        }      
+        .cencel{
+            width: 90%; height: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin:0 auto;
+        }
         .modalGal{
             width: 100%; height: 99%;
             margin: 0 auto;
@@ -117,9 +155,79 @@ mainBox.appendChild(box3)
             color: #fff;
             margin: 0 auto;
         }
+
+        .body {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-y: auto; 
+            max-height: 640px;
+          }
+          
+          .gallery {
+              position: relative;
+              width: 90%;
+              aspect-ratio: 5/3;
+              background-color: black;
+              border: 4px solid transparent;
+          
+              &:hover :not(div[data-pos='0'],img) { cursor: pointer; }
+          
+              & .item {
+                  --ImgSizeX: 20%;
+                  --ImgSizeY: 25%;
+                  position: absolute;
+                  width: var(--ImgSizeX);
+                  height: var(--ImgSizeY);
+          
+                  & img {
+                  width: 100%;
+                  height: 100%;
+                  object-fit: cover;
+                  }
+                  & img:hover {
+                  border: 2px solid transparent;
+                  }
+              }
+          
+              & div[data-pos='0'] { 
+                  width: calc(var(--ImgSizeX) * 3);
+                  height: calc(var(--ImgSizeY) * 3);
+                  pointer-events: none;
+                  transition: width .25s, height .25s;
+              }
+              }
+          
+              div[data-pos='0'] { transform: translate(0%,0%); }
+              div[data-pos='1'] { transform: translate(300%,0%); }
+              div[data-pos='2'] { transform: translate(400%,0%); }
+              div[data-pos='3'] { transform: translate(300%,100%); }
+              div[data-pos='4'] { transform: translate(400%,100%); }
+              div[data-pos='5'] { transform: translate(300%,200%); }
+              div[data-pos='6'] { transform: translate(400%,200%); }
+              div[data-pos='7'] { transform: translate(0%,300%); }
+              div[data-pos='8'] { transform: translate(100%,300%); }
+              div[data-pos='9'] { transform: translate(200%,300%); }
+              div[data-pos='10'] { transform: translate(300%,300%); }
+              div[data-pos='11'] { transform: translate(400%,300%); }
+          
+
     </style>
     
     `;
+
+    function Switch(el) {
+        if (!el.target.closest('.item')) return;
+        let origin = document.querySelector('div[data-pos="0"]');
+        let target = el.target.parentElement;
+        [target.dataset.pos,origin.dataset.pos] = [origin.dataset.pos,target.dataset.pos];
+    }
+    
+    window.addEventListener('click', Switch, false);
+
 
 dialogDiv.classList.add("exampleDiv");
 
