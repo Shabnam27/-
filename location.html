@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,42 +7,31 @@
 </head>
 <body>
   
-<div class="box">
-  <div class="boxs"></div>
-  <div class="boxs box2"></div>
-  <div class="boxs"></div>
-  <div class="boxs"></div>
-  <div class="boxs box5"></div>
-  <div class="boxs"></div>
-  <div class="boxs"></div>
-  <div class="boxs"></div>
-  <div class="boxs"></div>
-  <div class="boxs"></div>
-</div>
+  <div class="box">
+    <p>TEXT</p>
+  </div>
+
 <style>
+
 *{
-  margin: 0; padding: 0; box-sizing: border-box;
+  margin: 0; padding: 0;
 }
+
 .box{
-  width: 100%; height: 60vh;
-  border: 2px solid red;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  width: 1200px;
+  height: 50vh;
+  border: 10px solid red;
+  margin: 0 auto;
+  font-size: 5em;
 }
-.box2{
-  grid-column-start: 2;
-  grid-column-end: 4;
-  width: 300px;
-  height: 150px;
-  background-color: red;
-}
-.boxs{
-  width: 150px; height: 150px;
-  background-color: black;
-  margin: 5px;
-}
-.box5{
-  background-color: gold;
+
+@media(max-width: 414px){
+  .box{
+    width: 400px;
+    height: 300px;
+    border-color: gold;
+    font-size: 20px;
+  }
 }
 
 </style>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<div id="google-search" style="text-align: center; margin-top: 50px;">
+    <input type="text" id="search-input" style="padding: 10px; width: 300px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px;" placeholder="Search Google...">
+    <button id="search-button" style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">Search</button>
+</div>
+
+<script>
+
+    let googleBox = document.createElement('div')
+        googleBox.style.background = "red";
+        googleBox.style.width = '400px';
+        googleBox.style.height = '100px';
+        googleBox.style.display = 'flex';
+        googleBox.style.justifyContent = 'center';
+        googleBox.style.alignItems = 'center';
+    document.body.appendChild(googleBox)
+
+    let searchInput = document.createElement('input')
+        searchInput.style.padding = '10px';
+        searchInput.style.width = '350px';
+        searchInput.style.border = '1px solid gray';
+        searchInput.style.fontSize = '16px';
+        searchInput.style.outline = 'none';
+        searchInput.placeholder = 'google поиск';
+    googleBox.appendChild(searchInput)
+
+    let searchButton = document.createElement('button')
+        searchButton.style.padding = '10px 20px';
+        searchButton.style.border = 'none';
+        searchButton.style.background = 'green';
+        searchButton.style.fontSize = '16px';
+        searchButton.style.outline = 'none';
+        searchButton.textContent = 'поиск';
+        searchButton.style.cursor = 'pointer';
+        searchButton.style.color = '#fff';
+    googleBox.appendChild(searchButton)
+
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var srcInt = searchInput;
+        var srcBtn = searchButton;
+
+        srcBtn.addEventListener('click', function () {
+            var query = srcInt.value;
+            if (query.trim() !== '') {
+                window.location.href = 'https://www.google.com/search?q=' + encodeURIComponent(query);
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

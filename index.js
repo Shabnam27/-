@@ -2,7 +2,8 @@ let mainBox = document.getElementById('root')
 
 mainBox.style.width = '414px';
 mainBox.style.height = '890px';
-mainBox.style.background = 'gray';
+mainBox.style.backgroundColor = '#ffffff36';
+mainBox.style.backdropFilter = 'blur(40px)';
 mainBox.style.margin = '0 auto';
 
 let menu = document.createElement('div')
@@ -18,15 +19,53 @@ let box1 = document.createElement('div')
     box1.style.background = 'pink';
     box1.style.margin = '0 auto';
     box1.style.display = 'flex';
-    box1.style.alignItems = 'center';
     box1.style.justifyContent = 'space-between';
+    box1.style.alignItems = 'center';
 mainBox.appendChild(box1)
 
 let boxClock = document.createElement('div')
     boxClock.style.width = '155px';
     boxClock.style.height = '90px';
-    boxClock.style.background = 'gold';
 box1.appendChild(boxClock)
+
+
+let clock = document.createElement('div');
+    clock.style.fontSize = '48px';
+    clock.style.textAlign = 'center';
+    clock.style.color = '#fff';
+boxClock.appendChild(clock)
+
+let date = document.createElement('div');
+    date.style.fontSize = '24px';
+    date.style.textAlign = 'center';
+    date.style.color = '#fff';
+boxClock.appendChild(date)
+
+    function updateTime() {
+        var now = new Date();
+        var hours = now.getHours();
+        var minutes = now.getMinutes();
+        var seconds = now.getSeconds();
+
+        hours = hours < 10 ? '0' + hours : hours;
+        minutes = minutes < 10 ? '0' + minutes : minutes;
+
+        var timeString = hours + ':' + minutes;
+
+        clock.textContent = timeString;
+
+        var days = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Суб'];
+        var dayOfWeek = days[now.getDay()];
+
+        var months = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
+        var month = months[now.getMonth()];
+        var dateString = dayOfWeek + ', ' + now.getDate() + ' ' + month + ' ' ;
+        date.textContent = dateString;
+    }
+
+    updateTime();
+    setInterval(updateTime, 1000);
+
 
 let boxWather = document.createElement('div')
     boxWather.style.width = '155px';
@@ -38,25 +77,67 @@ box1.appendChild(boxWather)
 let box2 = document.createElement('div')
     box2.style.width = '414px';
     box2.style.height = '450px';
-    box2.style.background = 'coral';
+    // box2.style.background = 'coral';
     box2.style.margin = '0 auto';
     box2.style.display = 'flex';
     box2.style.alignItems = 'end';
     box2.style.justifyContent = 'center';
 mainBox.appendChild(box2)
 
-let boxSearch = document.createElement('div')
-    boxSearch.style.width = '400px';
-    boxSearch.style.height = '44px';
-    boxSearch.style.background = 'aqua';
-    boxSearch.style.borderRadius = '30px'
-box2.appendChild(boxSearch)
+let googleBox = document.createElement('div')
+    googleBox.style.width = '400px';
+    googleBox.style.height = '44px';
+    // googleBox.style.background = 'aqua';
+    googleBox.style.borderRadius = '30px';
+    googleBox.style.display = 'flex';
+    googleBox.style.justifyContent = 'center';
+    googleBox.style.alignItems = 'center';
+box2.appendChild(googleBox)
 
+    let searchInput = document.createElement('input')
+        searchInput.style.padding = '20px';
+        searchInput.style.width = '360px';
+        searchInput.style.height = '44px';
+        // searchInput.style.border = '1px solid gray';
+        searchInput.style.background = '#fff';
+        searchInput.style.border = 'none';
+        searchInput.style.fontSize = '16px';
+        searchInput.style.outline = 'none';
+        searchInput.style.borderTopLeftRadius = '30px';
+        searchInput.style.borderBottomLeftRadius = '30px';
+        searchInput.placeholder = 'google поиск';
+    googleBox.appendChild(searchInput)
+
+    let searchButton = document.createElement('button')
+        searchButton.style.padding = '10px 20px';
+        searchButton.style.height = '44px';
+        searchButton.style.border = 'none';
+        searchButton.style.background = 'green';
+        searchButton.style.fontSize = '16px';
+        searchButton.style.outline = 'none';
+        searchButton.textContent = 'поиск';
+        searchButton.style.cursor = 'pointer';
+        searchButton.style.color = '#fff';
+        searchButton.style.borderTopRightRadius = '30px';
+        searchButton.style.borderBottomRightRadius = '30px';
+    googleBox.appendChild(searchButton)
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var srcInt = searchInput;
+        var srcBtn = searchButton;
+
+        srcBtn.addEventListener('click', function () {
+            var query = srcInt.value;
+            if (query.trim() !== '') {
+                window.location.href = 'https://www.google.com/search?q=' + encodeURIComponent(query);
+            }
+        });
+    });
 
 let box3 = document.createElement('div')
     box3.style.width = '414px';
     box3.style.height = '150px';
-    box3.style.background = 'pink';
+    // box3.style.background = 'pink';
     box3.style.margin = '0 auto';
     box3.style.display = 'flex';
     box3.style.alignItems = 'center';
@@ -71,7 +152,7 @@ mainBox.appendChild(box3)
     infoBox3.style.display = 'flex';
     infoBox3.style.alignItems = 'center';
     infoBox3.style.justifyContent = 'center';
-    infoBox3.style.background = getRandomColor();
+    // infoBox3.style.background = getRandomColor();
     box3.appendChild(infoBox3)
 
     //modal 1
@@ -242,7 +323,7 @@ infoBox3.appendChild(dialogDiv);
     infoBox32.style.display = 'flex';
     infoBox32.style.alignItems = 'center';
     infoBox32.style.justifyContent = 'center';
-    infoBox32.style.background = getRandomColor();
+    // infoBox32.style.background = getRandomColor();
     box3.appendChild(infoBox32)
 
 //modal 2
@@ -305,7 +386,6 @@ infoBox3.appendChild(dialogDiv);
     }
       
 
-
     dialogDiv2.classList.add("exampleDiv");
 
     infoBox32.appendChild(dialogDiv2);
@@ -318,7 +398,7 @@ infoBox3.appendChild(dialogDiv);
     infoBox33.style.display = 'flex';
     infoBox33.style.alignItems = 'center';
     infoBox33.style.justifyContent = 'center';
-    infoBox33.style.background = getRandomColor();
+    // infoBox33.style.background = getRandomColor();
     box3.appendChild(infoBox33)
 
 //modal 3
@@ -433,7 +513,7 @@ infoBox3.appendChild(dialogDiv);
     infoBox34.style.display = 'flex';
     infoBox34.style.alignItems = 'center';
     infoBox34.style.justifyContent = 'center';
-    infoBox34.style.background = getRandomColor();
+    // infoBox34.style.background = getRandomColor();
     box3.appendChild(infoBox34)
 
     //modal 4
@@ -570,9 +650,6 @@ function getRandomColor() {
 
     return 'rgb('+r+','+g+','+b+')';
 }
-
-
-
 
 
 
