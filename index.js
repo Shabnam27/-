@@ -127,7 +127,7 @@ mainBox.appendChild(box3)
             margin:0 auto;
         }
         .modalGal{
-            width: 100%; height: 99%;
+            width: 100%; height: 100%;
             margin: 0 auto;
             backdrop-filter: blur(40px);
             background-color: #ffffff36;
@@ -164,7 +164,7 @@ mainBox.appendChild(box3)
             align-items: center;
             justify-content: center;
             overflow-y: auto; 
-            max-height: 640px;
+            max-height: 660px;
           }
           
           .gallery {
@@ -255,8 +255,8 @@ infoBox3.appendChild(dialogDiv);
         <p class="ptext">Google Play</p>
 
         <dialog id="myModal">
-            <div id="modalContent" style="overflow: hidden;"></div>
-            <button onclick="closeModal()">Закрыть</button>
+            <div id="modalContent"></div>
+            <button onclick="closeModal()" id="closeModal">Закрыть</button>
         </dialog>
           
 
@@ -289,25 +289,19 @@ infoBox3.appendChild(dialogDiv);
 
 
     function openModal() {
-        // Получаем ссылку на модальное окно
-        var modal = document.getElementById("myModal");
-        
-        // Загружаем содержимое другого HTML-файла с помощью fetch
-        fetch("dialog.html")
+        var modalSapp = document.getElementById("myModal");
+        fetch("App Store - Apple.html")
           .then(response => response.text())
           .then(data => {
-            // Помещаем полученный HTML внутрь модального окна
             document.getElementById("modalContent").innerHTML = data;
-            // Открываем модальное окно
-            modal.showModal();
+            modalSapp.showModal();
           })
           .catch(error => console.error(error));
     }
       
     function closeModal() {
-        // Получаем ссылку на модальное окно и закрываем его
-        var modal = document.getElementById("myModal");
-        modal.close();
+        var modalSapp = document.getElementById("myModal");
+        modalSapp.close();
     }
       
 
@@ -332,13 +326,11 @@ infoBox3.appendChild(dialogDiv);
     var dialogDiv3 = document.createElement("div");
 
     dialogDiv3.innerHTML = `
-        <button onclick="document.getElementById('modal').showModal()" class="btn3"></button>
+        <button onclick="document.getElementById('modalUS').showModal()" class="btn3"></button>
         <p class="ptext">Настройки</p>
-        <dialog id="modal">
-            <p>Hi!</p>
+        <dialog id="modalUS">
             <div>
-                <button>Yes</button>
-                <button onclick="document.querySelector('dialog').close()">cancel</button>
+                <button onclick="document.querySelector('#modalUS').close()">cancel</button>
             </div>
         </dialog>
     <style>
@@ -354,12 +346,7 @@ infoBox3.appendChild(dialogDiv);
             background-position: center;
             margin: 0 auto;
         }
-        .ptext{
-            color: #fff;
-            margin: 0 auto;
-        }
     </style>
-
     `;
 
     dialogDiv3.classList.add("exampleDiv");

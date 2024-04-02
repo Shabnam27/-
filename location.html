@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +7,37 @@
 </head>
 <body>
     
+    <form class="form" onsubmit="changelocation(event)">
+        <input class="place_for_search main-input" type="text" 
+               id="text-to-find" value="" placeholder="Search" autofocus> 
+        <!--для ввода текста-->
+    </form>
 
+    <script>
+        const changelocation = (e) => {
+        
+        e.preventDefault(); // Предотвращаем отправку формы
+        const keyword = document.querySelector('.main-input').value.trim(); 
+        // Получаем значение из инпута
+        
+        // Создаем объект ключ которого - это ключевое слово, а значение - путь к html файлу
+        const paths = {
+            
+            "web": 'dialog.html',
+            "text 2": './Generative AI Specialists.html',
+            "text 3": './Data Entry Specialists.html',
+            "text 4": './Video Editors.html',
+            "text 5": './Data Analyst.html'
+
+        }
+        // Проверяем существует ли такое ключевое слово
+        if(paths[keyword]) {
+          window.location.href = paths[keyword] // Переходим по ссылке
+        } else {
+          alert("Вы указали неверное кодовое слово!")
+        }
+      }
+    </script>
 
 </body>
 </html>

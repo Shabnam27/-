@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<script>
+
+// Создаем контейнер, в который будем добавлять боксы
+var container = document.createElement('div');
+
+// Задаем стили для боксов
+var boxStyles = {
+    width: '100px',
+    height: '150px',
+    backgroundColor: 'blue',
+    margin: '10px',
+    display: 'inline-block'
+};
+
+// Массив с данными для каждого бокса (текст и ссылки на фотографии)
+var boxesData = [
+    { text: "Box 1", imgUrl: "photo1.jpg" },
+    { text: "Box 2", imgUrl: "photo2.jpg" },
+    { text: "Box 3", imgUrl: "photo3.jpg" },
+    { text: "Box 4", imgUrl: "photo4.jpg" },
+    { text: "Box 5", imgUrl: "photo5.jpg" }
+];
+
+// Создаем боксы и добавляем их в контейнер
+boxesData.forEach(function(data) {
+    var box = document.createElement('div');
+    Object.assign(box.style, boxStyles); // Назначаем стили боксу
+    // Добавляем текст
+    var textElement = document.createElement('div');
+    textElement.textContent = data.text;
+    box.appendChild(textElement);
+    // Добавляем изображение
+    var imgElement = document.createElement('img');
+    imgElement.src = data.imgUrl;
+    imgElement.style.width = '100%'; // Задаем ширину изображения равной ширине бокса
+    box.appendChild(imgElement);
+    container.appendChild(box);
+});
+
+// Добавляем контейнер на страницу
+document.body.appendChild(container);
+
+
+</script>
+
+</body>
+</html>
