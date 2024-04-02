@@ -9,44 +9,65 @@
     
 <script>
 
-// Создаем контейнер, в который будем добавлять боксы
 var container = document.createElement('div');
-
-// Задаем стили для боксов
+//css
 var boxStyles = {
-    width: '100px',
-    height: '150px',
+    width: '400px',
+    height: '50px',
     backgroundColor: 'blue',
     margin: '10px',
-    display: 'inline-block'
+    borderRadius: '15px',
+    display: 'flex',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    cursor: 'pointer',
+    color: '#fff'
 };
 
-// Массив с данными для каждого бокса (текст и ссылки на фотографии)
 var boxesData = [
-    { text: "Box 1", imgUrl: "photo1.jpg" },
-    { text: "Box 2", imgUrl: "photo2.jpg" },
-    { text: "Box 3", imgUrl: "photo3.jpg" },
-    { text: "Box 4", imgUrl: "photo4.jpg" },
-    { text: "Box 5", imgUrl: "photo5.jpg" }
+    { imgUrl: "img/01.svg", text: "О телефоне" },
+    { imgUrl: "img/02.svg", text: "Обновление компонентов" },
+    { imgUrl: "img/03.svg", text: "Состояние" },
+    { imgUrl: "img/04.svg", text: "SIM и мобильные сети" },
+    { imgUrl: "img/05.svg", text: "Wi-Fi" },
+    { imgUrl: "img/06.svg", text: "Bluetooth" },
+    { imgUrl: "img/07.svg", text: "Точка доступа Wi-Fi" },
+    { imgUrl: "img/08.svg", text: "Экран и блокировка" },
+    { imgUrl: "img/09.svg", text: "Яркость" },
+    { imgUrl: "img/10.svg", text: "Звук и выбрация" },
+    { imgUrl: "img/11.svg", text: "Уведомления" },
+    { imgUrl: "img/12.svg", text: "Рабочий стол" },
+    { imgUrl: "img/13.svg", text: "Обои" },
+    { imgUrl: "img/14.svg", text: "Темы" },
+    { imgUrl: "img/15.svg", text: "Пароль и безопасность" },
+    { imgUrl: "img/16.svg", text: "Батарея" },
+    { imgUrl: "img/17.svg", text: "Приложения" },
+    { imgUrl: "img/18.svg", text: "Расширенные настройки" },
+    { imgUrl: "img/19.svg", text: "Аккаунт" },
+    { imgUrl: "img/20.svg", text: "Google" },
+    { imgUrl: "img/21.svg", text: "Конфиденциальность" }
 ];
 
-// Создаем боксы и добавляем их в контейнер
 boxesData.forEach(function(data) {
     var box = document.createElement('div');
-    Object.assign(box.style, boxStyles); // Назначаем стили боксу
-    // Добавляем текст
+    Object.assign(box.style, boxStyles);
+    
+    //img
+    var imgElement = document.createElement('img');
+    imgElement.src = data.imgUrl;
+    imgElement.style.width = '25px';
+    imgElement.style.height = '25px';
+    imgElement.style.margin = '20px';
+    imgElement.style.color = 'white';
+    box.appendChild(imgElement);
+    container.appendChild(box);
+    
+    //text
     var textElement = document.createElement('div');
     textElement.textContent = data.text;
     box.appendChild(textElement);
-    // Добавляем изображение
-    var imgElement = document.createElement('img');
-    imgElement.src = data.imgUrl;
-    imgElement.style.width = '100%'; // Задаем ширину изображения равной ширине бокса
-    box.appendChild(imgElement);
-    container.appendChild(box);
 });
 
-// Добавляем контейнер на страницу
 document.body.appendChild(container);
 
 

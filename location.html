@@ -1,43 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
 <body>
-    
-    <form class="form" onsubmit="changelocation(event)">
-        <input class="place_for_search main-input" type="text" 
-               id="text-to-find" value="" placeholder="Search" autofocus> 
-        <!--для ввода текста-->
-    </form>
+  
+<div class="box">
+  <div class="boxs"></div>
+  <div class="boxs box2"></div>
+  <div class="boxs"></div>
+  <div class="boxs"></div>
+  <div class="boxs box5"></div>
+  <div class="boxs"></div>
+  <div class="boxs"></div>
+  <div class="boxs"></div>
+  <div class="boxs"></div>
+  <div class="boxs"></div>
+</div>
 
-    <script>
-        const changelocation = (e) => {
-        
-        e.preventDefault(); // Предотвращаем отправку формы
-        const keyword = document.querySelector('.main-input').value.trim(); 
-        // Получаем значение из инпута
-        
-        // Создаем объект ключ которого - это ключевое слово, а значение - путь к html файлу
-        const paths = {
-            
-            "web": 'dialog.html',
-            "text 2": './Generative AI Specialists.html',
-            "text 3": './Data Entry Specialists.html',
-            "text 4": './Video Editors.html',
-            "text 5": './Data Analyst.html'
+<style>
 
-        }
-        // Проверяем существует ли такое ключевое слово
-        if(paths[keyword]) {
-          window.location.href = paths[keyword] // Переходим по ссылке
-        } else {
-          alert("Вы указали неверное кодовое слово!")
-        }
-      }
-    </script>
+*{
+  margin: 0; padding: 0; box-sizing: border-box;
+}
+.box{
+  width: 100%; height: 60vh;
+  border: 2px solid red;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.box2{
+  grid-column-start: 2;
+  grid-column-end: 3;
+  background-color: red;
+}
+.boxs{
+  width: 150px; height: 150px;
+  border-radius: 50%;
+  background-color: black;
+}
+.box5{
+  background-color: gold;
+}
+
+</style>
 
 </body>
 </html>
