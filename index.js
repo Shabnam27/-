@@ -328,9 +328,19 @@ infoBox3.appendChild(dialogDiv);
     dialogDiv3.innerHTML = `
         <button onclick="document.getElementById('modalUS').showModal()" class="btn3"></button>
         <p class="ptext">Настройки</p>
-        <dialog id="modalUS">
-            <div>
-                <button onclick="document.querySelector('#modalUS').close()">cancel</button>
+        <dialog id="modalUS" class="modalGal">
+            <div class="cencel">
+                <button onclick="document.querySelector('#modalUS').close()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+                    </svg>
+                </button>
+
+                <button onclick="document.querySelector('#modalUS').close()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+                    </svg>
+                </button>
             </div>
         </dialog>
     <style>
@@ -353,6 +363,67 @@ infoBox3.appendChild(dialogDiv);
 
     infoBox33.appendChild(dialogDiv3);
 
+    let settings = document.getElementById("modalUS");
+        let containerSettings = document.createElement('div');
+        //css
+        var boxStyles = {
+            width: '370px',
+            height: '50px',
+            margin: '10px',
+            borderRadius: '15px',
+            display: 'flex',
+            justifyContent: 'flex-start',
+            alignItems: 'center',
+            cursor: 'pointer',
+            color: '#000'
+        };
+
+        var boxesData = [
+            { imgUrl: "img/01.svg", text: "О телефоне" },
+            { imgUrl: "img/02.svg", text: "Обновление компонентов" },
+            { imgUrl: "img/03.svg", text: "Состояние" },
+            { imgUrl: "img/04.svg", text: "SIM и мобильные сети" },
+            { imgUrl: "img/05.svg", text: "Wi-Fi" },
+            { imgUrl: "img/06.svg", text: "Bluetooth" },
+            { imgUrl: "img/07.svg", text: "Точка доступа Wi-Fi" },
+            { imgUrl: "img/08.svg", text: "Экран и блокировка" },
+            { imgUrl: "img/09.svg", text: "Яркость" },
+            { imgUrl: "img/10.svg", text: "Звук и выбрация" },
+            { imgUrl: "img/11.svg", text: "Уведомления" },
+            { imgUrl: "img/12.svg", text: "Рабочий стол" },
+            { imgUrl: "img/13.svg", text: "Обои" },
+            { imgUrl: "img/14.svg", text: "Темы" },
+            { imgUrl: "img/15.svg", text: "Пароль и безопасность" },
+            { imgUrl: "img/16.svg", text: "Батарея" },
+            { imgUrl: "img/17.svg", text: "Приложения" },
+            { imgUrl: "img/18.svg", text: "Расширенные настройки" },
+            { imgUrl: "img/19.svg", text: "Аккаунт" },
+            { imgUrl: "img/20.svg", text: "Google" },
+            { imgUrl: "img/21.svg", text: "Конфиденциальность" }
+        ];
+
+        boxesData.forEach(function(data) {
+            var box = document.createElement('div');
+            Object.assign(box.style, boxStyles);
+            
+            //img
+            var imgElement = document.createElement('img');
+            imgElement.src = data.imgUrl;
+            imgElement.style.width = '25px';
+            imgElement.style.height = '25px';
+            imgElement.style.margin = '20px';
+            imgElement.style.color = 'white';
+            box.appendChild(imgElement);
+            containerSettings.appendChild(box);
+            
+            //text
+            var textElement = document.createElement('div');
+            textElement.textContent = data.text;
+            box.appendChild(textElement);
+        });
+
+    settings.appendChild(containerSettings);
+
 
     //bbox4
     var infoBox34 = document.createElement('div')
@@ -370,13 +441,21 @@ infoBox3.appendChild(dialogDiv);
     var dialogDiv4 = document.createElement("div");
 
     dialogDiv4.innerHTML = `
-        <button onclick="document.getElementById('modal').showModal()" class="btn4"></button>
+        <button onclick="document.getElementById('modalFiles').showModal()" class="btn4"></button>
         <p class="ptext">Файлы</p>
-        <dialog id="modal">
-            <p>Hi!</p>
-            <div>
-                <button>Yes</button>
-                <button onclick="document.querySelector('dialog').close()">cancel</button>
+        <dialog id="modalFiles" class="modalGal">
+            <div class="cencel">
+                <button onclick="document.querySelector('#modalFiles').close()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+                    </svg>
+                </button>
+
+                <button onclick="document.querySelector('#modalFiles').close()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+                    </svg>
+                </button>
             </div>
         </dialog>
     <style>
@@ -403,6 +482,85 @@ infoBox3.appendChild(dialogDiv);
     dialogDiv4.classList.add("exampleDiv");
 
     infoBox34.appendChild(dialogDiv4);
+
+    let box4files = document.getElementById("modalFiles");
+        var boxFiles = document.createElement('div');
+        boxFiles.style.display = 'flex';
+        boxFiles.style.flexWrap = 'wrap'
+        //css
+        var boxFilesStyles = {
+            width: '70px',
+            height: '70px',
+            margin: '10px',
+            borderRadius: '15px',
+            cursor: 'pointer',
+            color: '#fff',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+        };
+
+        var boxesFilesData = [
+            { imgUrl: "img/folder-fill.svg"},
+            { imgUrl: "img/folder-fill.svg"},
+            { imgUrl: "img/folder-fill.svg"},
+            { imgUrl: "img/folder-fill.svg"},
+            { imgUrl: "img/folder-fill.svg"},
+            { imgUrl: "img/folder-fill.svg"},
+            { imgUrl: "img/folder-fill.svg"},
+            { imgUrl: "img/folder-fill.svg"},
+            { imgUrl: "img/folder-fill.svg"},
+            { imgUrl: "img/folder-fill.svg"},
+            { imgUrl: "img/folder-fill.svg"},
+            { imgUrl: "img/folder-fill.svg"},
+            { imgUrl: "img/folder-fill.svg"},
+            { imgUrl: "img/folder-fill.svg"},
+            { imgUrl: "img/folder-fill.svg"},
+            { imgUrl: "img/folder-fill.svg"},
+            { imgUrl: "img/folder-fill.svg"},
+            { imgUrl: "img/folder-fill.svg"},
+            { imgUrl: "img/folder-fill.svg"},
+            { imgUrl: "img/folder-fill.svg"},
+            { imgUrl: "img/folder-fill.svg"},
+            { imgUrl: "img/folder-fill.svg"},
+            { imgUrl: "img/folder-fill.svg"},
+            { imgUrl: "img/folder-fill.svg"},
+            { imgUrl: "img/folder-fill.svg"},
+            { imgUrl: "img/folder-fill.svg"},
+            { imgUrl: "img/folder-fill.svg"},
+            { imgUrl: "img/folder-fill.svg"},
+            { imgUrl: "img/folder-fill.svg"},
+            { imgUrl: "img/folder-fill.svg"},
+            { imgUrl: "img/folder-fill.svg"},
+            { imgUrl: "img/folder-fill.svg"},
+            { imgUrl: "img/folder-fill.svg"},
+            { imgUrl: "img/folder-fill.svg"},
+            { imgUrl: "img/folder-fill.svg"},
+            { imgUrl: "img/folder-fill.svg"},
+            { imgUrl: "img/folder-fill.svg"},
+            { imgUrl: "img/folder-fill.svg"},
+            { imgUrl: "img/folder-fill.svg"},
+            { imgUrl: "img/folder-fill.svg"},
+            { imgUrl: "img/10.svg"}
+        ];
+
+        boxesFilesData.forEach(function(data) {
+            var boxF = document.createElement('div');
+            Object.assign(boxF.style, boxFilesStyles);
+            
+            //img
+            var imgElement = document.createElement('img');
+            imgElement.src = data.imgUrl;
+            imgElement.style.width = '100%';
+            imgElement.style.height = '100%';
+            imgElement.style.backgroundPosition = 'center';
+            imgElement.style.color = 'white';
+            boxF.appendChild(imgElement);
+            boxFiles.appendChild(boxF);
+        });
+
+    box4files.appendChild(boxFiles);
+
 
 
 function getRandomColor() {
