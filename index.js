@@ -390,6 +390,7 @@ infoBox3.appendChild(dialogDiv);
 
     infoBox32.appendChild(dialogDiv2);
 
+
 //bbox3
     var infoBox33 = document.createElement('div')
     // infoBox33.textContent = 'box' + (i+1);
@@ -650,8 +651,6 @@ function getRandomColor() {
 
     return 'rgb('+r+','+g+','+b+')';
 }
-
-
 
 let box4 = document.createElement('div')
     box4.style.width = '414px';
