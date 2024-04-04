@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Клавиатура и звонок</title>
+<style>
+.phone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.number-input {
+  width: 280px;
+  height: 40px;
+  margin-bottom: 20px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid gray;
+    padding: 15px;
+    font-size: 20px;
+}
+
+.keyboard {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.number, .call {
+  width: 90px;
+  height: 70px;
+  border-radius: 50px;
+  border: none;
+  background-color: #fff;
+  box-shadow: 2px 2px 6px black;
+  font-size: 24px;
+  cursor: pointer;
+  margin: 6px;
+}
+.call{
+    width: 200px;
+    height: 70px;
+    background-color: rgb(20, 184, 20);
+    color: #fff;
+}
+</style>
+
+</head>
+<body>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function() {
+  const phoneDiv = document.createElement('div');
+  phoneDiv.id = 'phone';
+  phoneDiv.classList.add('phone');
+
+  const numberInput = document.createElement('input');
+  numberInput.type = 'text';
+  numberInput.id = 'number';
+  numberInput.classList.add('number-input');
+  numberInput.placeholder = 'Введите номер';
+  phoneDiv.appendChild(numberInput);
+
+  const keyboardDiv = document.createElement('div');
+  keyboardDiv.classList.add('keyboard');
+
+  const buttonsLayout = [
+    ['1', '2', '3'],
+    ['4', '5', '6'],
+    ['7', '8', '9'],
+    ['+', '0', '#']
+  ];
+
+buttonsLayout.forEach(row => {
+    const rowDiv = document.createElement('div');
+    rowDiv.classList.add('row');
+    row.forEach(digit => {
+      const button = document.createElement('button');
+      button.classList.add('number');
+      button.textContent = digit;
+      button.addEventListener('click', () => {
+        const inputDigit = button.textContent;
+        if (inputDigit === '+' || inputDigit === '#' || !isNaN(parseInt(inputDigit))) {
+          numberInput.value += inputDigit;
+        }
+      });
+      rowDiv.appendChild(button);
+    });
+    keyboardDiv.appendChild(rowDiv);
+});
+
+const callButton = document.createElement('button');
+  callButton.id = 'call';
+  callButton.classList.add('call');
+  callButton.textContent = 'Позвонить';
+  callButton.addEventListener('click', () => {
+    const phoneNumber = numberInput.value.trim();
+    if (phoneNumber !== '') {
+      alert(`Вызов номера: ${phoneNumber}`);
+      numberInput.value = '';
+    } else {
+      alert('Пожалуйста, введите номер телефона');
+    }
+});
+
+    keyboardDiv.appendChild(callButton);
+    phoneDiv.appendChild(keyboardDiv);
+
+    document.body.appendChild(phoneDiv);
+});
+
+
+
+</script>
+
+</body>
+</html>

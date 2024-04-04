@@ -16,7 +16,7 @@ mainBox.appendChild(menu)
 let box1 = document.createElement('div')
     box1.style.width = '414px';
     box1.style.height = '100px';
-    box1.style.background = 'pink';
+    // box1.style.background = 'pink';
     box1.style.margin = '0 auto';
     box1.style.display = 'flex';
     box1.style.justifyContent = 'space-between';
@@ -70,8 +70,80 @@ boxClock.appendChild(date)
 let boxWather = document.createElement('div')
     boxWather.style.width = '155px';
     boxWather.style.height = '90px';
-    boxWather.style.background = 'aqua';
+    //boxWather.style.background = 'aqua';
 box1.appendChild(boxWather)
+
+    let weatherContainer = document.createElement('div');
+        weatherContainer.style.width = '100%'
+        weatherContainer.style.height = '100%'
+        weatherContainer.style.display = 'flex'
+        weatherContainer.style.flexDirection = 'column'
+        weatherContainer.style.alignItems = 'center'
+        weatherContainer.style.justifyContent = 'center'
+    boxWather.appendChild(weatherContainer);
+
+    let weatherInfo = document.createElement('div');
+        weatherInfo.style.display = 'flex'
+        weatherInfo.style.flexDirection = 'column'
+        weatherInfo.style.alignItems = 'center'
+        weatherInfo.style.justifyContent = 'center'
+        weatherInfo.style.width = '100%'
+        weatherInfo.style.height = '100%'
+        weatherInfo.style.color = '#fff'
+    weatherContainer.appendChild(weatherInfo);
+
+//js weather
+
+document.addEventListener("DOMContentLoaded", function() {
+    const pogodaInfo = weatherInfo;
+ 
+    let pogoda = false;
+  
+    const setWeather = (data) => {
+      const name = data.name;
+      const temp = pogoda ? (data.main.temp * 1.8 + 32).toFixed(1) + 'F' : data.main.temp.toFixed(1) + '°';
+      const weatherCondition = data.weather ? data.weather[0].main : '';
+      const tempMax = pogoda ? Math.round(data.main.temp_max * 1.8 + 32) + 'F' : Math.round(data.main.temp_max) + '°';
+      const tempMin = pogoda ? Math.round(data.main.temp_min * 1.8 + 32) + 'F' : Math.round(data.main.temp_min) + '°';
+  
+      pogodaInfo.innerHTML = `
+        <div>
+          <span>${name}</span>
+          <span>${temp}</span>
+        </div>
+        <div>
+          ${weatherCondition && `<img src="https://cdn.pixabay.com/photo/2016/03/18/15/06/fog-1265203_1280.png" alt="Weather" width="50"/>`}
+          <span>${weatherCondition}</span>
+        </div>
+      `;
+    };
+  
+    const fetchWeather = (lat, lon) => {
+      const api = `https://weather-proxy.freecodecamp.rocks/api/current?lat=${lat}&lon=${lon}`;
+      fetch(api)
+        .then(response => response.json())
+        .then(data => setWeather(data))
+        .catch(error => console.error('Ошибка:', error));
+    };
+  
+    // const handleMeter = () => {
+    //   fahrenheit = !fahrenheit;
+    //   meterButton.innerText = fahrenheit ? 'Celsius' : 'Fahrenheit';
+    // };
+  
+    // meterButton.addEventListener('click', handleMeter);
+  
+   
+      navigator.geolocation.getCurrentPosition(position => {
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
+        fetchWeather(lat, lon);
+      }, error => {
+        console.error('Ошибка геолокации:', error);
+        pogodaInfo.innerText = 'Ошибка получения геолокации';
+      });
+});
+  
 
 
 let box2 = document.createElement('div')
@@ -662,11 +734,274 @@ let box4 = document.createElement('div')
     box4.style.justifyContent = 'center';
 mainBox.appendChild(box4)
 
-for(i=0; i<4; i++){
-    var infoBox4 = document.createElement('div')
-    infoBox4.textContent = 'box' + (i+1);
-    infoBox4.style.width = '100px';
-    infoBox4.style.height = '120px';
-    infoBox4.style.background = getRandomColor();
-    box4.appendChild(infoBox4)
-}
+// for(i=0; i<4; i++){
+var infoBox41 = document.createElement('div')
+    // infoBox41.textContent = 'box' + (i+1);
+    infoBox41.style.width = '100px';
+    infoBox41.style.height = '120px';
+    infoBox41.style.display = 'flex';
+    infoBox41.style.alignItems = 'center';
+    infoBox41.style.justifyContent = 'center';
+    // infoBox41.style.background = getRandomColor();
+    box4.appendChild(infoBox41)
+// }
+
+var callBox = document.createElement("div");
+
+callBox.innerHTML = `
+    <button onclick="document.getElementById('modalPhone').showModal()" class="btn5"></button>  
+    <dialog id="modalPhone" class="modalGal">
+        <div class="cencel">
+            <button onclick="document.querySelector('#modalPhone').close()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+                </svg>
+            </button>
+
+            <button onclick="document.querySelector('#modalPhone').close()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+                </svg>
+            </button>
+        </div>
+    </dialog>
+<style>
+    .btn5{
+        width: 85px;
+        height: 85px;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        background: url('https://cdn.pixabay.com/photo/2020/06/30/10/23/icon-5355897_1280.png') no-repeat;
+        background-size: cover;
+        background-position: center;
+        margin: 0 auto;
+    }
+    .ptext{
+        color: #fff;
+        margin: 0 auto;
+    }
+
+    .phone {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+      }
+      
+      .keyboard {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 13px;
+      }
+      
+      .number, .call {
+        width: 90px;
+        height: 70px;
+        border-radius: 50px;
+        border: none;
+        background-color: #fff;
+        box-shadow: 2px 2px 6px black;
+        font-size: 24px;
+        cursor: pointer;
+        margin: 6px;
+      }
+      .call{
+          width: 200px;
+          height: 70px;
+          background-color: rgb(20, 184, 20);
+    color: #fff;
+      }
+</style>
+
+`;
+
+callBox.classList.add("exampleDiv");
+
+infoBox41.appendChild(callBox);
+
+let modalPhone = document.getElementById('modalPhone');
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    const phoneDiv = document.createElement('div');
+    phoneDiv.id = 'phone';
+    phoneDiv.classList.add('phone');
+  
+    const numberInput = document.createElement('input');
+    numberInput.type = 'text';
+    numberInput.id = 'number';
+    numberInput.classList.add('number-input');
+    numberInput.placeholder = 'Введите номер';
+    numberInput.style.width = '300px';
+    numberInput.style.height = '40px';
+    numberInput.style.marginBottom = '20px';
+    numberInput.style.outline = 'none';
+    numberInput.style.border = 'none';
+    numberInput.style.borderBottom = '1px solid gray';
+    numberInput.style.padding = '15px';
+    numberInput.style.fontSize = '20px';
+    phoneDiv.appendChild(numberInput);
+
+
+    const keyboardDiv = document.createElement('div');
+    keyboardDiv.classList.add('keyboard');
+  
+    const buttonsLayout = [
+      ['1', '2', '3'],
+      ['4', '5', '6'],
+      ['7', '8', '9'],
+      ['+', '0', '#']
+    ];
+  
+buttonsLayout.forEach(row => {
+    const rowDiv = document.createElement('div');
+    rowDiv.classList.add('row');
+    row.forEach(digit => {
+        const button = document.createElement('button');
+        button.classList.add('number');
+        button.textContent = digit;
+        button.addEventListener('click', () => {
+          const inputDigit = button.textContent;
+          if (inputDigit === '+' || inputDigit === '#' || !isNaN(parseInt(inputDigit))) {
+            numberInput.value += inputDigit;
+          }
+        });
+        rowDiv.appendChild(button);
+    });
+    keyboardDiv.appendChild(rowDiv);
+});
+  
+const callButton = document.createElement('button');
+    callButton.id = 'call';
+    callButton.classList.add('call');
+    callButton.textContent = 'Позвонить';
+    callButton.addEventListener('click', () => {
+    const phoneNumber = numberInput.value.trim();
+    if (phoneNumber !== '') {
+        alert(`Вызов номера: ${phoneNumber}`);
+        numberInput.value = '';
+    } else {
+        alert('Пожалуйста, введите номер телефона');
+    }
+  });
+  
+    keyboardDiv.appendChild(callButton);
+    phoneDiv.appendChild(keyboardDiv);
+  
+    modalPhone.appendChild(phoneDiv);
+});
+
+
+
+//2
+var infoBox42 = document.createElement('div')
+    // infoBox42.textContent = 'box' + (i+1);
+    infoBox42.style.width = '100px';
+    infoBox42.style.height = '120px';
+    infoBox42.style.display = 'flex';
+    infoBox42.style.alignItems = 'center';
+    infoBox42.style.justifyContent = 'center';
+    infoBox42.style.background = getRandomColor();
+    box4.appendChild(infoBox42)
+
+
+    var telegramBox = document.createElement("div");
+
+    telegramBox.innerHTML = `
+        <button id="openModalTelegram" class="btn6">Открыть модальное окно</button>
+
+        <div id="myModal" class="modalTg">
+        <div class="modal-content">
+            <iframe id="iframeContent" src="" frameborder="0"></iframe>
+        </div>
+        </div>
+    <style>
+        .btn6{
+            width: 85px;
+            height: 85px;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            background: url('https://cdn.pixabay.com/photo/2020/06/30/10/23/icon-5355897_1280.png') no-repeat;
+            background-size: cover;
+            background-position: center;
+            margin: 0 auto;
+        }
+        .ptext{
+            color: #fff;
+            margin: 0 auto;
+        }
+        
+        .modalTg {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+          }
+          
+          .modal-content {
+            width: 80%;
+            height: 100%;
+          }
+          
+          #iframeContent {
+            width: 100%;
+            height: 400px;
+          }
+          
+    </style>
+    
+    `;
+    
+    telegramBox.classList.add("exampleDiv");
+    
+    infoBox42.appendChild(telegramBox);
+
+    //
+    var modalTg = document.getElementById("myModal");
+    var openBtn = document.getElementById("openModalTelegram");
+    var iframeContent = document.getElementById("iframeContent");
+
+    function openModal(url) {
+    modalTg.style.display = "block";
+    iframeContent.src = url;
+    }
+    openBtn.onclick = function() {
+    openModal("https://google.com"); // Замените ссылку на нужную веб-страницу
+    }
+    window.onclick = function(event) {
+    if (event.target == modalTg) {
+        closeModal();
+    }
+    }
+
+
+    
+
+    
+//3
+var infoBox43 = document.createElement('div')
+    // infoBox43.textContent = 'box' + (i+1);
+    infoBox43.style.width = '100px';
+    infoBox43.style.height = '120px';
+    infoBox43.style.background = getRandomColor();
+    box4.appendChild(infoBox43)
+
+
+//4
+var infoBox44 = document.createElement('div')
+    // infoBox44.textContent = 'box' + (i+1);
+    infoBox44.style.width = '100px';
+    infoBox44.style.height = '120px';
+    infoBox44.style.background = getRandomColor();
+    box4.appendChild(infoBox44)

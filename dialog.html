@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,61 +6,89 @@
     <title>Document</title>
 </head>
 <body>
-    <style>
-        body{
-            overflow: hidden;
-        }
-    </style>
-    <button onclick="document.getElementById('modal').showModal()">ok</button>
-    <dialog id="modal">
-        <p>Hi!</p>
-        <ul id="cart"></ul>
-        <button onclick="clearCart()">Очистить корзину</button>
-
-        <div>
-            <button>Yes</button>
-            <button onclick="document.querySelector('dialog').close()">cancel</button>
-        </div>
-    </dialog>
-
-    <h1>Корзина</h1>
-
-    <button onclick="addToCart('Товар 1', 100)">Добавить товар 1</button>
-    <button onclick="addToCart('Товар 2', 200)">Добавить товар 2</button>
     
-    <script>
-        let cart = [];
+<script>
 
-function addToCart(itemName, itemPrice) {
-    const item = {
-        name: itemName,
-        price: itemPrice
-    };
-    cart.push(item);
-    displayCart();
+// let arr1 = []; // создание пустого массива
+// let arr2 = [1, 2, 3, 4, 5]; // создание массива с элементами
+// let arr3 = new Array(); // создание пустого массива с помощью конструктора
+// let arr4 = new Array(arr2); 
+
+// console.log(arr4);
+
+// let arr = [1, 2, 3];
+// arr.push(4); // добавление элемента 4 в конец массива
+// console.log(arr); // [1, 2, 3, 4]
+
+// arr.pop(); // удаление последнего элемента
+// console.log(arr); // [1, 2, 3]
+
+let arr = [1, 2, 3];
+// Используя цикл for
+for (let i = 0; i < arr.length; i++) {
+  console.log(arr[i]);
 }
 
-function displayCart() {
-    const cartList = document.getElementById('cart');
-    cartList.innerHTML = '';
-    let total = 0;
-    cart.forEach(item => {
-        const listItem = document.createElement('li');
-        listItem.textContent = `${item.name} - ${item.price} руб.`;
-        cartList.appendChild(listItem);
-        total += item.price;
+
+</script>
+
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title></title>
+<style>
+  /* Стили для боксов */
+  .box {
+    width: 200px;
+    height: 100px;
+    background-color: lightblue;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+  }
+</style>
+</head>
+<body>
+    
+<div id="boxes-container"></div>
+
+<script>
+  // Информация для каждого бокса
+  const boxData = [
+    { title: 'Box 1', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'},
+    { title: 'Box 2', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
+    { title: 'Box 3', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' }
+  ];
+
+  // Функция для создания бокса на основе информации
+  function createBox(title, content, img) {
+    const box = document.createElement('div');
+    box.classList.add('box');
+    box.innerHTML = `
+      <h2>${title}</h2>
+      <p>${content}</p>
+    `;
+    return box;
+  }
+
+  // Функция для добавления боксов на страницу
+  function addBoxesToPage(data) {
+    const container = document.getElementById('boxes-container');
+    data.forEach(boxInfo => {
+      const box = createBox(boxInfo.title, boxInfo.content);
+      container.appendChild(box);
     });
-    const totalItem = document.createElement('li');
-    totalItem.textContent = `Итого: ${total} руб.`;
-    cartList.appendChild(totalItem);
-}
+  }
 
-function clearCart() {
-    cart = [];
-    displayCart();
-}
-
-    </script>
-
+  // Вызов функции добавления боксов при загрузке страницы
+  window.onload = function() {
+    addBoxesToPage(boxData);
+  };
+</script>
 </body>
 </html>
