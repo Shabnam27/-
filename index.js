@@ -2,8 +2,6 @@ let mainBox = document.getElementById('root')
 
 mainBox.style.width = '414px';
 mainBox.style.height = '890px';
-mainBox.style.backgroundColor = '#ffffff36';
-mainBox.style.backdropFilter = 'blur(40px)';
 mainBox.style.margin = '0 auto';
 
 let menu = document.createElement('div')
