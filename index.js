@@ -299,7 +299,7 @@ mainBox.appendChild(box3)
             background-color: transparent;
             border: none;
             cursor: pointer;
-            background: url('https://cdn.pixabay.com/photo/2016/10/10/01/49/gallery-1727481_1280.png') no-repeat;
+            background: url('img/free-icon-gallery-5064098.png') no-repeat;
             background-size: cover;
             background-position: center;
             margin: 0 auto;
@@ -404,58 +404,49 @@ infoBox3.appendChild(dialogDiv);
 
     dialogDiv2.innerHTML = `
         
-        <button onclick="openModal()" class="btn2" id="googlePlay"></button>
-        <p class="ptext">Google Play</p>
-
-        <dialog id="myModal">
-            <div id="modalContent"></div>
-            <button onclick="closeModal()" id="closeModal">Закрыть</button>
-        </dialog>
-          
+    <button onclick="openModalAppStore()" class="btn2"></button>
+    <p class="ptext">App Store</p>
 
     <style>
         .btn2{
-            width: 60px;
+            width: 70px;
             height: 70px;
             border-radius: 10px;
             background-color: transparent;
             border: none;
             cursor: pointer;
-            background: url('https://cdn.pixabay.com/photo/2016/08/31/00/49/google-1632434_1280.png') no-repeat;
+            background: url('img/free-icon-store-5064322.png') no-repeat;
             background-size: cover;
             background-position: center;
             margin: 0 auto;
-        }
-        .ptext{
-            color: #fff;
-            margin: 0 auto;
-        }
-        #myModal{
-            width:100%;
-            height:100%;
-            margin: 0 auto;
-            overflow: hidden;
         }
     </style>
 
     `;
 
+    function openModalAppStore() {
+        document.location.href = 'https://www.apple.com/app-store/'
+    }
+    
+    function closeModalAppStore() {
+        document.getElementById('myModalAppStore').close();
+    }
 
-    function openModal() {
-        var modalSapp = document.getElementById("myModal");
-        fetch("App Store - Apple.html")
-          .then(response => response.text())
-          .then(data => {
-            document.getElementById("modalContent").innerHTML = data;
-            modalSapp.showModal();
-          })
-          .catch(error => console.error(error));
-    }
+    // function openModal() {
+    //     var modalSapp = document.getElementById("myModal");
+    //     fetch("App Store - Apple.html")
+    //       .then(response => response.text())
+    //       .then(data => {
+    //         document.getElementById("modalContent").innerHTML = data;
+    //         modalSapp.showModal();
+    //       })
+    //       .catch(error => console.error(error));
+    // }
       
-    function closeModal() {
-        var modalSapp = document.getElementById("myModal");
-        modalSapp.close();
-    }
+    // function closeModal() {
+    //     var modalSapp = document.getElementById("myModal");
+    //     modalSapp.close();
+    // }
       
 
     dialogDiv2.classList.add("exampleDiv");
@@ -504,7 +495,7 @@ infoBox3.appendChild(dialogDiv);
             background-color: transparent;
             border: none;
             cursor: pointer;
-            background: url('https://cdn.pixabay.com/photo/2021/02/18/09/21/icon-6026657_1280.png') no-repeat;
+            background: url('img/free-icon-setting-5064298.png') no-repeat;
             background-size: cover;
             background-position: center;
             margin: 0 auto;
@@ -619,7 +610,7 @@ infoBox3.appendChild(dialogDiv);
             background-color: transparent;
             border: none;
             cursor: pointer;
-            background: url('https://cdn.pixabay.com/photo/2013/04/01/09/16/folder-98462_1280.png') no-repeat;
+            background: url('img/free-icon-video-5064365.png') no-repeat;
             background-size: cover;
             background-position: center;
             margin: 0 auto;
@@ -727,7 +718,6 @@ function getRandomColor() {
 let box4 = document.createElement('div')
     box4.style.width = '414px';
     box4.style.height = '160px';
-    box4.style.background = 'blue';
     box4.style.margin = '0 auto';
     box4.style.display = 'flex';
     box4.style.alignItems = 'center';
@@ -772,7 +762,7 @@ callBox.innerHTML = `
         background-color: transparent;
         border: none;
         cursor: pointer;
-        background: url('https://cdn.pixabay.com/photo/2020/06/30/10/23/icon-5355897_1280.png') no-repeat;
+        background: url('img/free-icon-phone-5064202.png') no-repeat;
         background-size: cover;
         background-position: center;
         margin: 0 auto;
@@ -788,18 +778,16 @@ callBox.innerHTML = `
         align-items: center;
         justify-content: center;
         height: 100%;
-      }
-      
-      .keyboard {
+    }
+    .keyboard {
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
         align-items: center;
         justify-content: center;
         gap: 13px;
-      }
-      
-      .number, .call {
+    }
+    .number, .call {
         width: 90px;
         height: 70px;
         border-radius: 50px;
@@ -809,13 +797,13 @@ callBox.innerHTML = `
         font-size: 24px;
         cursor: pointer;
         margin: 6px;
-      }
-      .call{
-          width: 200px;
-          height: 70px;
-          background-color: rgb(20, 184, 20);
-    color: #fff;
-      }
+    }
+    .call{
+        width: 200px;
+        height: 70px;
+        background-color: rgb(20, 184, 20);
+        color: #fff;
+    }
 </style>
 
 `;
@@ -906,20 +894,15 @@ var infoBox42 = document.createElement('div')
     infoBox42.style.display = 'flex';
     infoBox42.style.alignItems = 'center';
     infoBox42.style.justifyContent = 'center';
-    infoBox42.style.background = getRandomColor();
+    //infoBox42.style.background = getRandomColor();
     box4.appendChild(infoBox42)
 
 
     var telegramBox = document.createElement("div");
 
     telegramBox.innerHTML = `
-        <button id="openModalTelegram" class="btn6">Открыть модальное окно</button>
+    <button onclick="openModalTelegram()" class="btn6"></button>
 
-        <div id="myModal" class="modalTg">
-        <div class="modal-content">
-            <iframe id="iframeContent" src="" frameborder="0"></iframe>
-        </div>
-        </div>
     <style>
         .btn6{
             width: 85px;
@@ -927,38 +910,11 @@ var infoBox42 = document.createElement('div')
             background-color: transparent;
             border: none;
             cursor: pointer;
-            background: url('https://cdn.pixabay.com/photo/2020/06/30/10/23/icon-5355897_1280.png') no-repeat;
+            background: url('img/free-icon-message-5064161.png') no-repeat;
             background-size: cover;
             background-position: center;
             margin: 0 auto;
         }
-        .ptext{
-            color: #fff;
-            margin: 0 auto;
-        }
-        
-        .modalTg {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.4);
-          }
-          
-          .modal-content {
-            width: 80%;
-            height: 100%;
-          }
-          
-          #iframeContent {
-            width: 100%;
-            height: 400px;
-          }
-          
     </style>
     
     `;
@@ -968,34 +924,62 @@ var infoBox42 = document.createElement('div')
     infoBox42.appendChild(telegramBox);
 
     //
-    var modalTg = document.getElementById("myModal");
-    var openBtn = document.getElementById("openModalTelegram");
-    var iframeContent = document.getElementById("iframeContent");
 
-    function openModal(url) {
-    modalTg.style.display = "block";
-    iframeContent.src = url;
+    function openModalTelegram() {
+        document.location.href = 'https://web.telegram.org/a/'
     }
-    openBtn.onclick = function() {
-    openModal("https://google.com"); // Замените ссылку на нужную веб-страницу
-    }
-    window.onclick = function(event) {
-    if (event.target == modalTg) {
-        closeModal();
-    }
-    }
-
-
     
+    function closeModalTelegram() {
+        document.getElementById('myModalTelegram').close();
+    }
 
+    // 
     
 //3
 var infoBox43 = document.createElement('div')
     // infoBox43.textContent = 'box' + (i+1);
     infoBox43.style.width = '100px';
     infoBox43.style.height = '120px';
-    infoBox43.style.background = getRandomColor();
+    infoBox43.style.display = 'flex';
+    infoBox43.style.alignItems = 'center';
+    infoBox43.style.justifyContent = 'center';
+    //infoBox43.style.background = getRandomColor();
     box4.appendChild(infoBox43)
+
+
+    var internetBox = document.createElement("div");
+
+    internetBox.innerHTML = `
+    <button onclick="openModalInternet()" class="btn7"></button>
+
+    <style>
+        .btn7{
+            width: 85px;
+            height: 85px;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            background: url('img/free-icon-internet-5064120.png') no-repeat;
+            background-size: cover;
+            background-position: center;
+            margin: 0 auto;
+        }
+    </style>
+    
+    `;
+    
+
+    function openModalInternet() {
+        document.location.href = 'https://www.google.com'
+    }
+    
+    function closeModalInternet() {
+        document.getElementById('myModalInternet').close();
+    }
+
+    internetBox.classList.add("exampleDiv");
+    
+    infoBox43.appendChild(internetBox);
 
 
 //4
@@ -1003,5 +987,185 @@ var infoBox44 = document.createElement('div')
     // infoBox44.textContent = 'box' + (i+1);
     infoBox44.style.width = '100px';
     infoBox44.style.height = '120px';
-    infoBox44.style.background = getRandomColor();
+    infoBox44.style.display = 'flex';
+    infoBox44.style.alignItems = 'center';
+    infoBox44.style.justifyContent = 'center';
+    //infoBox44.style.background = getRandomColor();
     box4.appendChild(infoBox44)
+
+
+    // var cameraBox = document.createElement("div");
+
+    // cameraBox.innerHTML = `
+    // <button onclick="openModalCamera()" class="btn8"></button>
+    // <dialog id="myModalCamera" class="modalGal">
+    //     <div class="cencel">
+    //         <button onclick="closeModalCamera()" id="closeModalCamera">
+    //             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+    //                 <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+    //             </svg>
+    //         </button>
+
+    //         <button onclick="closeModalCamera()" id="closeModalCamera">
+    //             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+    //                 <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+    //             </svg>
+    //         </button>
+    //     </div>
+    //     <div class="camera"></div>
+    // </dialog>
+
+    // <style>
+    //     .btn8{
+    //         width: 85px;
+    //         height: 85px;
+    //         background-color: transparent;
+    //         border: none;
+    //         cursor: pointer;
+    //         background: url('img/free-icon-play-button-5064229.png') no-repeat;
+    //         background-size: cover;
+    //         background-position: center;
+    //         margin: 0 auto;
+    //     }
+    //     .ptext{
+    //         color: #fff;
+    //         margin: 0 auto;
+    //     }
+    //     .camera{
+    //         width: 100%;
+    //         height: 90%;
+    //         background: red;
+    //     }
+    // </style>
+    
+    // `;
+    
+    // function openModalCamera() {
+    //     document.getElementById('myModalCamera').showModal();
+    // }
+    
+    // function closeModalCamera() {
+    //     document.getElementById('myModalCamera').close();
+    // }
+
+    // cameraBox.classList.add("exampleDiv");
+    
+    // infoBox44.appendChild(cameraBox);
+
+// Создаем элементы
+const cameraBox = document.createElement("div");
+cameraBox.classList.add("exampleDiv");
+
+const button = document.createElement("button");
+button.classList.add("btn8");
+button.style.width = "85px";
+button.style.height = "85px";
+button.style.backgroundColor = "transparent";
+button.style.border = "none";
+button.style.cursor = "pointer";
+button.style.background = "url('img/free-icon-play-button-5064229.png') no-repeat";
+button.style.backgroundSize = "cover";
+button.style.backgroundPosition = "center";
+button.style.margin = "0 auto";
+button.onclick = openModalCamera;
+
+const dialog = document.createElement("dialog");
+dialog.id = "myModalCamera";
+dialog.classList.add("modalGal");
+
+const closeButton1 = createCloseButton();
+const closeButton2 = createCloseButton();
+
+const cameraDiv = document.createElement("div");
+cameraDiv.classList.add("camera");
+cameraDiv.style.width = "100%";
+cameraDiv.style.height = "100%";
+
+const video = document.createElement('video');
+video.id = 'video';
+video.width = 390;
+video.height = 480;
+video.autoplay = true;
+
+const canvas = document.createElement('canvas');
+canvas.id = 'canvas';
+canvas.width = 90;
+canvas.height = 90;
+
+const snapButton = document.createElement('button');
+snapButton.id = 'snap';
+snapButton.textContent = '.';
+snapButton.style.width = '70px';
+snapButton.style.height = '70px';
+snapButton.style.display = 'flex';
+snapButton.style.justifyContent = 'center';
+snapButton.style.alignItems = 'center';
+// snapButton.style.fontSize = '70px';
+snapButton.style.background = '#fff';
+snapButton.style.borderRadius = '50%';
+snapButton.style.border = 'none';
+snapButton.style.margin = '0 auto';
+snapButton.style.boxShadow = '1px 1px 10px gray';
+
+cameraDiv.appendChild(video);
+cameraDiv.appendChild(canvas);
+cameraDiv.appendChild(snapButton);
+
+navigator.mediaDevices.getUserMedia({ video: true })
+    .then(function(stream) {
+        video.srcObject = stream;
+        video.play();
+    })
+    .catch(function(err) {
+        console.log("Ошибка при доступе к камере: " + err);
+    });
+
+function takeSnapshot() {
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+}
+
+snapButton.addEventListener('click', function() {
+    takeSnapshot();
+});
+
+
+cameraBox.appendChild(button);
+cameraBox.appendChild(dialog);
+dialog.appendChild(closeButton1);
+dialog.appendChild(closeButton2);
+dialog.appendChild(cameraDiv);
+infoBox44.appendChild(cameraBox);
+
+//кнопкa закрытия
+function createCloseButton() {
+    const closeButton = document.createElement("button");
+    closeButton.onclick = closeModalCamera;
+    closeButton.id = "closeModalCamera";
+    
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+    svg.setAttribute("width", "16");
+    svg.setAttribute("height", "16");
+    svg.setAttribute("fill", "currentColor");
+    svg.setAttribute("class", "bi bi-x");
+    svg.setAttribute("viewBox", "0 0 16 16");
+    
+    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    path.setAttribute("d", "M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708");
+    
+    svg.appendChild(path);
+    closeButton.appendChild(svg);
+    
+    return closeButton;
+}
+
+
+function openModalCamera() {
+    const dialog = document.getElementById('myModalCamera');
+    dialog.showModal();
+}
+function closeModalCamera() {
+    const dialog = document.getElementById('myModalCamera');
+    dialog.close();
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Открыть модальное окно с другим сайтом</title>
+
+<body>
+    
+<script>
+
+const modalStyleAppStore = `
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 1000px;
+    height: 600px;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 50px;
+    display: none;
+`;
+const modalBoxStyleAppStore = `
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    height: 80%;
+    overflow: auto;
+`;
+const closeModalBtnStyleAppStore = `
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 30px;
+    cursor: pointer;
+`;
+const openModalBtnApp = document.createElement('button');
+openModalBtnApp.textContent = 'Открыть модальное окно с другим сайтом';
+openModalBtnApp.className = 'btn2';
+openModalBtnApp.onclick = openModalAppStore;
+
+const modalAppStore = document.createElement('div');
+modalAppStore.id = 'myModal';
+modalAppStore.style = modalStyleAppStore;
+
+const modalBoxAppStore = document.createElement('div');
+modalBoxAppStore.id = 'modalBoxAppStore';
+modalBoxAppStore.style = modalBoxStyleAppStore;
+
+const modalHeader = document.createElement('h2');
+modalHeader.textContent = 'Содержимое другого сайта';
+
+const closeModalBtn = document.createElement('span');
+closeModalBtn.id = 'closeModal';
+closeModalBtn.textContent = '×';
+closeModalBtn.style = closeModalBtnStyleAppStore;
+closeModalBtn.onclick = closeModalAppStore;
+
+modalBoxAppStore.appendChild(modalHeader);
+modalBoxAppStore.appendChild(closeModalBtn);
+modalAppStore.appendChild(modalBoxAppStore);
+
+document.body.appendChild(openModalBtnApp);
+document.body.appendChild(modalAppStore);
+
+function openModalAppStore() {
+    window.location.href = "https://play.google.com/store/games?hl=ru&gl=US";
+}
+
+function closeModalAppStore() {
+    window.history.back();
+}
+
+
+</script> 
+    
+
+
+</body>
+</html>
